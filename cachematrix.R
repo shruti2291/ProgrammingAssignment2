@@ -35,15 +35,21 @@ list(set=set, get=get,
 
 cacheSolve <- function(x, ...) {
          m<-x$getmatrix()
+         
 ##Checking if inverse is already set or not
          
     if(!is.null(m)){
       message("getting cached data")
       return(m)
     }
-    
+
+##Get the matrix
     matrix<-x$get()
+    
+##Compute the inverse
     m<-solve(matrix, ...)
+    
+##Set the inverse
     x$setmatrix(m)
     
     m   ## Return a matrix that is the inverse of 'x'
